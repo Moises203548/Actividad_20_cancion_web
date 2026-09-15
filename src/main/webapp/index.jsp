@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Proyecto Cancion Web</h1>
-<a href="${pageContext.request.contextPath}/usuario?accion=listar">Ir a Usuarios</a>
+<a href="${pageContext.request.contextPath}/usuario?accion=listar">Ir a Usuarios</a><br><br>
+<a href="${pageContext.request.contextPath}/cancion?accion=listar">Ir a Canciones</a>
 </body>
 </html>
