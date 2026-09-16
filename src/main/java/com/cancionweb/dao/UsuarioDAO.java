@@ -193,4 +193,23 @@ public class UsuarioDAO {
         u.setRol(rs.getString("rol"));
         return u;
     }
+    public boolean tokenExpirado(String token) {
+        String sql = "SELECT token_expiracion FROM usuario WHERE token_recuperacion = ?";
+        try (Connection con = ConexionBD.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, token);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Timestamp expiracion = rs.getTimestamp("token_expiracion");
+                    if (expiracion == null) return true;
+                    return expiracion.before(new Timestamp(System.currentTimeMillis()));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 }
