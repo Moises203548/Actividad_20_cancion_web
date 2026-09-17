@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/usuario", "/cancion", "/reporte"})
+@WebFilter(urlPatterns = {"/usuario", "/cancion", "/reporteUsuario", "/reporteCancion"})
 public class SesionFilter implements Filter {
 
     @Override

@@ -193,6 +193,45 @@ public class UsuarioDAO {
         u.setRol(rs.getString("rol"));
         return u;
     }
+    public List<Usuario> reportePorRol(String rol) {
+        List<Usuario> lista = new ArrayList<>();
+        String sql = "SELECT * FROM usuario WHERE rol = ? ORDER BY nombre";
+
+        try (Connection con = ConexionBD.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, rol);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    lista.add(mapearUsuario(rs));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
+    public List<Usuario> reportePorDominioCorreo(String dominio) {
+        List<Usuario> lista = new ArrayList<>();
+        String sql = "SELECT * FROM usuario WHERE email LIKE ? ORDER BY email";
+
+        try (Connection con = ConexionBD.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, "%@" + dominio);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    lista.add(mapearUsuario(rs));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
     public boolean tokenExpirado(String token) {
         String sql = "SELECT token_expiracion FROM usuario WHERE token_recuperacion = ?";
         try (Connection con = ConexionBD.getConexion();

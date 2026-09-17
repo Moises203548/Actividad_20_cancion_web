@@ -10,7 +10,7 @@
 <h1>Gestión de Canciones</h1>
 <a href="${pageContext.request.contextPath}/cancion?accion=nuevo">+ Nueva Cancion</a>
 <a href="${pageContext.request.contextPath}/index.jsp">Inicio</a>
-
+<a href="${pageContext.request.contextPath}/reporteCancion">Ver Reportes</a>
 <table border="1" cellpadding="8" cellspacing="0">
     <tr>
         <th>ID</th>

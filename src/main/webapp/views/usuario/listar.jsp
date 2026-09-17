@@ -10,7 +10,7 @@
 <h1>Gestión de Usuarios</h1>
 <a href="${pageContext.request.contextPath}/usuario?accion=nuevo">+ Nuevo Usuario</a>
 <a href="${pageContext.request.contextPath}/index.jsp">Inicio</a>
-
+<a href="${pageContext.request.contextPath}/reporteUsuario">Ver Reportes</a>
 <table border="1" cellpadding="8" cellspacing="0">
     <tr>
         <th>ID</th>
