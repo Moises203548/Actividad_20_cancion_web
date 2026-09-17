@@ -1,0 +1,15 @@
+{
+  "build": {
+    "type": "maven",
+    "goal": "package"
+  },
+  "deploy": {
+    "container": "TOMCAT10",
+    "war": [
+      {
+        "file": "target/cancion-web.war",
+        "context": "/"
+      }
+    ]
+  }
+}
